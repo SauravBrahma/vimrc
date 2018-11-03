@@ -1,0 +1,37 @@
+" setting
+" 文字コードをUFT-8に設定
+set fenc=utf-8
+" インデントをスペース4つ分に設定
+set tabstop=4
+" オートインデント
+set smartindent
+" <Ctrl>+jでESCと等価
+inoremap <C-j> <Esc>
+
+
+" 見た目
+" 行番号を表示
+set number
+" 括弧入力時の対応する括弧を表示
+set showmatch
+" ステータスラインを常に表示
+set laststatus=2
+" コマンドラインの補完
+set wildmode=list:longest
+" コードの色付け
+syntax on
+colorscheme desert
+
+" 検索
+" 検索文字列が小文字の場合は大文字小文字を区別なく検索する
+set ignorecase
+" 検索文字列に大文字が含まれている場合は区別して検索する
+set smartcase
+" 検索文字列入力時に順次対象文字列にヒットさせる
+set incsearch
+" 検索時に最後まで行ったら最初に戻る
+set wrapscan
+" 検索語をハイライト表示
+set hlsearch
+" ESC連打でハイライト解除
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
