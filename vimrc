@@ -1,12 +1,15 @@
 " setting
 " 文字コードをUFT-8に設定
+set encoding=utf-8
 set fenc=utf-8
+" タブの代わりに空白を使う
+set expandtab
 " インデントをスペース4つ分に設定
 set tabstop=4
-" オートインデント
-set smartindent
 " <Ctrl>+jでESCと等価
 inoremap <C-j> <Esc>
+" 補完メニューの高さを10にする
+set pumheight=10
 
 
 " 見た目
@@ -35,3 +38,22 @@ set wrapscan
 set hlsearch
 " ESC連打でハイライト解除
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
+
+" 括弧補完
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap [<Enter> []<Left><CR><ESC><S-o>
+inoremap (<Enter> ()<Left><CR><ESC><S-o>
+
+" ペースト設定
+if &term =~ "xterm"
+    let &t_SI .= "\e[?2004h"
+    let &t_EI .= "\e[?2004l"
+    let &pastetoggle = "\e[201~"
+
+    function XTermPasteBegin(ret)
+        set paste
+        return a:ret
+    endfunction
+
+    inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
+endif
